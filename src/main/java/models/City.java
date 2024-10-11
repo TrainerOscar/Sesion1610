@@ -1,4 +1,5 @@
 package models;
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,18 +11,15 @@ import org.hibernate.validator.constraints.Length;
 @Setter
 @Table(name = "cities")
 @ToString
-@NamedQueries(
-        {
-                @NamedQuery(name = "City.findAll", query = "SELECT c FROM City c"")
-                        }
-                )
+@NamedQueries({
+        @NamedQuery(name = "City.findAll", query = "SELECT c FROM City c")
+})
+public class City extends BaseEntity {
 
-        public class City extends BaseEntity{
-        @Column (nullable = false)
-        @Length(min = 3, max = 60)
-        private String name;
+    @Column(nullable = false)
+    @Length(min = 3, max = 60)
+    private String name;
 
-        @Column (nullable = false, columnDefinition = "boolean default true")
-        private boolean state = true
-
-        }
+    @Column(nullable = false, columnDefinition = "boolean default true")
+    private boolean state = true;
+}
